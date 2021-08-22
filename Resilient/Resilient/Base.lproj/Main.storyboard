@@ -1,24 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Resilient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step Tracker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Li-3l-uX8">
+                                <rect key="frame" x="50" y="144" width="314" height="70"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" systemColor="systemOrangeColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-tZ-ZaC" userLabel="lineChartBox" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="254" width="382" height="388"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Graph" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psz-JF-l3Q" userLabel="showGraphLbl">
+                                <rect key="frame" x="20" y="672" width="154" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="154" id="Lma-ug-CYc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xDj-4g-BHx" userLabel="showGraphSw">
+                                <rect key="frame" x="184" y="676" width="51" height="31"/>
+                                <connections>
+                                    <action selector="showGraphBtn:" destination="BYZ-38-t0r" eventType="valueChanged" id="7yZ-uK-G7U"/>
+                                </connections>
+                            </switch>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="12X-bL-XNj">
+                                <rect key="frame" x="0.0" y="45" width="414" height="43"/>
+                                <items>
+                                    <navigationItem title="Title" id="lC2-ke-4MT">
+                                        <barButtonItem key="rightBarButtonItem" title="RefreshBtn" image="arrow.clockwise" catalog="system" id="q13-LM-ZGZ">
+                                            <connections>
+                                                <action selector="refreshBtn:" destination="BYZ-38-t0r" id="CM6-cr-N8V"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disconnected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bft-aT-Jir" userLabel="connectStatusLbl">
+                                <rect key="frame" x="257" y="677" width="141" height="30"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.94333755970001221" green="0.63477464932486394" blue="0.23961515353353113" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="xDj-4g-BHx" firstAttribute="top" secondItem="AUC-tZ-ZaC" secondAttribute="bottom" constant="34" id="0gX-h8-p7C"/>
+                            <constraint firstItem="AUC-tZ-ZaC" firstAttribute="top" secondItem="8Li-3l-uX8" secondAttribute="bottom" constant="40" id="ETf-YP-Ysg"/>
+                            <constraint firstItem="8Li-3l-uX8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="I2p-O8-s7A"/>
+                            <constraint firstItem="AUC-tZ-ZaC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ME9-tA-h4u"/>
+                            <constraint firstItem="Psz-JF-l3Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Mqk-jJ-mhy"/>
+                            <constraint firstItem="12X-bL-XNj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="1" id="NFF-X0-dhs"/>
+                            <constraint firstItem="Psz-JF-l3Q" firstAttribute="top" secondItem="AUC-tZ-ZaC" secondAttribute="bottom" constant="30" id="X5I-qx-YTF"/>
+                            <constraint firstItem="8Li-3l-uX8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YKj-AF-gKl"/>
+                            <constraint firstItem="AUC-tZ-ZaC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YYg-Z5-iWX"/>
+                            <constraint firstItem="12X-bL-XNj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cF0-fX-CTC"/>
+                            <constraint firstItem="AUC-tZ-ZaC" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-220" id="dTk-EE-4ds"/>
+                            <constraint firstItem="12X-bL-XNj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-774" id="gqO-RU-6K1"/>
+                            <constraint firstItem="xDj-4g-BHx" firstAttribute="leading" secondItem="Psz-JF-l3Q" secondAttribute="trailing" constant="10" id="h14-Ln-o8e"/>
+                            <constraint firstItem="12X-bL-XNj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tCW-G1-TMt"/>
+                            <constraint firstItem="bft-aT-Jir" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="120" id="try-BA-xqI"/>
+                            <constraint firstItem="AUC-tZ-ZaC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="u2p-8r-kzW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bft-aT-Jir" secondAttribute="bottom" constant="155" id="ufS-Mi-mM2"/>
+                            <constraint firstItem="8Li-3l-uX8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="x2J-1z-bbK"/>
+                            <constraint firstItem="12X-bL-XNj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yET-3A-fGA"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="connectStatusLbl" destination="bft-aT-Jir" id="yol-zo-k9x"/>
+                        <outlet property="lineChartBox" destination="AUC-tZ-ZaC" id="Z5m-Ii-jQr"/>
+                        <outlet property="showGraphLbl" destination="Psz-JF-l3Q" id="EIM-ir-OYa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="34.782608695652179" y="93.75"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
